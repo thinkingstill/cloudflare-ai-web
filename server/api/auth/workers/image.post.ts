@@ -22,6 +22,9 @@ export default defineEventHandler(async (event) => {
     if (!res.ok) {
         return handleErr(res)
     }
-
-    return imageResponse(res)
+    if (model == "flux-1-schnell") {
+        return imageResponseV2(res)
+    } else {
+        return imageResponse(res)
+    }
 })
