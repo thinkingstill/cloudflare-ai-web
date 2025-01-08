@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
     if (!res.ok) {
         return handleErr(res)
     }
-    if (model == "flux-1-schnell") {
+    if (model.includes("flux-1-schnell")) {
         return imageResponseV2(res)
     } else {
         return imageResponse(res)
