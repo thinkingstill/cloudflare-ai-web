@@ -189,6 +189,7 @@ async function handleSend(input: string, addHistory: boolean, files: {
         ...req,
         num_steps: settings.value.image_steps,
       }).then(res => {
+        console.log(res)
         const blob = res as Blob
         Object.assign(history.value[history.value.length - 1], {
           content: input,
