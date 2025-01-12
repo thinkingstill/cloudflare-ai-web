@@ -54,9 +54,11 @@ export function imageResponse(res: Response) {
 }
 
 export function imageResponseV2(res: Response) {
-    const data = await res.json()
-    const dataURI = `data:image/jpeg;charset=utf-8;base64,${data.result.image}`
-    return new Response(dataURI)
+    return new Response(res.body, {
+        headers: {
+            'Content-Type': 'image/jpeg',
+        }
+    })
 }
 
 export async function handleErr(res: Response) {
