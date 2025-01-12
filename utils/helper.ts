@@ -53,6 +53,14 @@ export function imageResponse(res: Response) {
     })
 }
 
+export function imageResponseV2(res: Response) {
+    return new Response(res.body, {
+        headers: {
+            'Content-Type': 'image/jpeg',
+        }
+    })
+}
+
 export async function handleErr(res: Response) {
     const text = await res.text()
     console.error(res.status, res.statusText, text)
