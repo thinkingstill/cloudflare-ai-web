@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
         num_steps
     }
 
-    const res = await fetch(`${process.env.CF_GATEWAY}/ai/run/@cf/${model}`, {
+    const res = await fetch(`${process.env.CF_GATEWAY}/ai/run/${model}`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${process.env.CF_TOKEN}`,
