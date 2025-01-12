@@ -57,7 +57,7 @@ export function imageResponseV2(res: Response) {
     console.log(res)
     console.log(res.body)
     // Convert from base64 string
-    const binaryString = atob(res.body.image);
+    const binaryString = atob(res.body.result.image);
     // Create byte representation
     const img = Uint8Array.from(binaryString, (m) => m.codePointAt(0));
     return new Response(img, {
