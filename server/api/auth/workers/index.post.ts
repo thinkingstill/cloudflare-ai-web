@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
         messages,
     }
 
-    const res = await fetch(`${process.env.CF_GATEWAY}/workers-ai/${model}`, {
+    const res = await fetch(`${process.env.CF_GATEWAY}/ai/run/@cf/${model}`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${process.env.CF_TOKEN}`,
