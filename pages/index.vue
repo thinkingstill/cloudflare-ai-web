@@ -194,7 +194,7 @@ async function handleSend(input: string, addHistory: boolean, files: {
         Object.assign(history.value[history.value.length - 1], {
           content: input,
           src: [blob],
-          src_url: [URL.createObjectURL(blob)]
+          src_url: typeof res === "string" ? [res] : [URL.createObjectURL(blob)]
         })
 
         setTimeout(() => {
