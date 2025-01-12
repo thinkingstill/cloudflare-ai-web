@@ -53,21 +53,6 @@ export function imageResponse(res: Response) {
     })
 }
 
-export function imageResponseV2(res: Response) {
-    console.log(res)
-    console.log(res.body)
-    // Convert from base64 string
-    const binaryString = atob(res.body.result.image);
-    // Create byte representation
-    const img = Uint8Array.from(binaryString, (m) => m.codePointAt(0));
-    return new Response(img, {
-      headers: {
-        'Content-Type': 'image/jpeg',
-      },
-    });
-}
-
-
 export async function handleErr(res: Response) {
     const text = await res.text()
     console.error(res.status, res.statusText, text)
