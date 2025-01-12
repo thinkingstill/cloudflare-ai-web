@@ -119,8 +119,12 @@ export async function basicFetch(
         }
     }
 
-    if (response.headers.get('Content-Type')?.includes('image')) {
+    if (response.headers.get('Content-Type')?.includes('image/png')) {
         return await response.blob()
+    }
+
+    if (response.headers.get('Content-Type')?.includes('image/jpeg')) {
+        return new Blob([response], { type: 'image/jpeg'})
     }
 
 }
