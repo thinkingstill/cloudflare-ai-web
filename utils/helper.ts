@@ -125,9 +125,7 @@ export async function basicFetch(
 
     if (response.headers.get('Content-Type')?.includes('application/json')) {
         const data = await response.json()
-        const binaryString = atob(data.result.image)
-        const img = Uint8Array.from(binaryString, (m) => m.charCodeAt(0))
-        return new Blob([img], { type: 'image/jpeg' })
+        return  `data:image/jpeg;charset=utf-8;base64,${data.result.image}`
     }
 }
 
