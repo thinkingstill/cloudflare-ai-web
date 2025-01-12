@@ -26,8 +26,7 @@ export default defineEventHandler(async (event) => {
         const data = await res.json()
         const binaryData = atob(data.result.image)
         const img = Uint8Array.from(binaryData, (m) => m.charCodeAt(0))
-        const img_blob =  new Blob([img], { type: 'image/jpeg' })
-        return imageResponseV2(img_blob)
+        return imageResponseV2(img)
     } else {
         return imageResponse(res)
     }
