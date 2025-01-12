@@ -54,11 +54,9 @@ export function imageResponse(res: Response) {
 }
 
 export function imageResponseV2(res: Response) {
-    return new Response(res.body, {
-        headers: {
-            'Content-Type': 'image/jpeg',
-        }
-    })
+    const data = await response.json()
+    const dataURI = `data:image/jpeg;charset=utf-8;base64,${data.result.image}`
+    return new Response(dataURI)
 }
 
 export async function handleErr(res: Response) {
@@ -123,10 +121,6 @@ export async function basicFetch(
         return await response.blob()
     }
 
-    if (response.headers.get('Content-Type')?.includes('application/json')) {
-        const data = await response.json()
-        return  `data:image/jpeg;charset=utf-8;base64,${data.result.image}`
-    }
 }
 
 export function streamFetch(path: string, body: Object, onStream: (data: string) => void) {
