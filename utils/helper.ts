@@ -53,8 +53,11 @@ export function imageResponse(res: Response) {
     })
 }
 
-export function imageResponseV2(res: Response) {
-    return new Response(res.body, {
+export function imageResponseV2(res: string) {
+    const binaryData = atob(res)
+    const img = Uint8Array.from(binaryData, (m) => m.charCodeAt(0))
+    const img_blob = new Blob([img], { type: 'image/jpeg' })
+    return new Response(img_blob, {
         headers: {
             'Content-Type': 'image/jpeg',
         }
@@ -124,7 +127,7 @@ export async function basicFetch(
     }
 
     if (response.headers.get('Content-Type')?.includes('image/jpeg')) {
-        return new Blob([response], { type: 'image/jpeg'})
+        return await response.blob()
     }
 
 }
