@@ -23,7 +23,11 @@ export default defineEventHandler(async (event) => {
         return handleErr(res)
     }
     if (model.includes("flux-1-schnell")) {
-        return imageResponseV2(res)
+        const data = await res.json()
+        const binaryData = atob(data.result.image)
+        const img = Uint8Array.from(binaryData, (m) => m.charCodeAt(0))
+        const img_blob =  new Blob([img], { type: 'image/jpeg' })
+        return imageResponseV2(img_blob)
     } else {
         return imageResponse(res)
     }
