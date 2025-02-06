@@ -87,6 +87,30 @@ export const uniModals: Model[] = [
         type: 'universal'
     },
     {
+        id: 'gemini-2.0-flash',
+        name: 'Gemini 2.0 Flash',
+        provider: 'google',
+        type: 'universal'
+    },
+    {
+        id: 'gemini-2.0-flash-lite-preview-02-05',
+        name: 'Gemini 2.0 Flash-Lite Preview 02-05',
+        provider: 'google',
+        type: 'universal'
+    },
+    {
+        id: 'gemini-2.0-pro-exp-02-05',
+        name: 'Gemini 2.0 Pro Experimental 02-05',
+        provider: 'google',
+        type: 'universal'
+    },
+    {
+        id: 'gemini-2.0-flash-thinking-exp-01-21',
+        name: 'Gemini 2.0 Flash Thinking Experimental 01-21',
+        provider: 'google',
+        type: 'universal'
+    },
+    {
         id: 'gemini-2.0-flash-exp',
         name: 'Gemini 2.0 Flash Experimental',
         provider: 'google',
